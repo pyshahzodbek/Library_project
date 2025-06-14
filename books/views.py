@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.urls import is_valid_path
 from rest_framework.views import APIView
+from rest_framework.viewsets import ModelViewSet
 from yaml import serialize
 
 from .serializers import BookSerializers
@@ -133,6 +134,11 @@ class BookUpdateDeatailApiView(generics.RetrieveUpdateAPIView):
 class BookUpdateDeleteView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Book.objects.all()
     serializer_class = BookSerializers
+
+class BookViewsSet(ModelViewSet):
+    queryset=Book.objects.all()
+    serializer_class = BookSerializers
+
 
 
 
